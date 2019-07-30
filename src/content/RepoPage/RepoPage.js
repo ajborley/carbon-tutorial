@@ -134,13 +134,18 @@ const RepoPage = () => {
                     forwardText="Next page"
                     pageSize={currentPageSize}
                     pageSizes={[5, 10, 15, 25]}
-                    itemsPerPageText="Items per page"
+                    itemsPerPageText="Repositories per page:"
                     onChange={({ page, pageSize }) => {
                       if (pageSize !== currentPageSize) {
                         setCurrentPageSize(pageSize);
                       }
                       setFirstRowIndex(pageSize * (page - 1));
                     }}
+                    itemRangeText={(min, max, total) =>
+                      min === max
+                        ? `Repository ${min} of ${total}`
+                        : `Repositories ${min} to ${max} of ${total}`
+                    }
                   />
                 </>
               );
